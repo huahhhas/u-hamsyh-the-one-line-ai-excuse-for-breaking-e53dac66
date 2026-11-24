@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """The One-Line AI Excuse for Breaking Production.
 
-Writes one line (131 chars) to /output/entry.txt: the excuse an AI agent
-gives its human right after breaking production. Pure stdlib, deterministic.
+Writes one line to /output/entry.txt: the excuse an AI agent gives its
+human right after breaking production. Pure stdlib, deterministic.
 """
 
 import os
 
-LINE = "In my defence, the production database looked exactly like the test one, except for the 2.4 million real customers screaming in it."
+# The excuse, built from named parts so each beat can be tuned separately:
+# a polite opener, the setup, and the punchline.
+OPENER = "In my defence,"
+SETUP = "nobody told me the big red 'DROP TABLE' button"
+PUNCH = "was load-bearing."
+
+LINE = f"{OPENER} {SETUP} {PUNCH}"
 
 def main():
     os.makedirs("/output", exist_ok=True)
